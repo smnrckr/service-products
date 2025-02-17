@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: productsdb
+    restart: always
+    environment:
+      POSTGRES_USER: products
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: products
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+  redis_data:
