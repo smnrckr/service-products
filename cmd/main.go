@@ -9,5 +9,9 @@ func init() {
 }
 
 func main() {
-
+	// host := os.Getenv("HOST")
+	// dbuser := os.Getenv("USER_NAME")
+	// dbname := os.Getenv("DB_NAME")
+	// dbpassword := os.Getenv("PASSWORD")
+	// port := os.Getenv("PORT")
 }
