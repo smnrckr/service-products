@@ -1,5 +1,9 @@
 package models
 
+import "errors"
+
+var ErrorServiceUnavailable = errors.New("503 Service Unavailable")
+
 type Product struct {
 	Id           int    `json:"id" gorm:"column:id"`
 	ProductName  string `json:"product_name" gorm:"column:product_name"`
