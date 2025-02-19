@@ -3,6 +3,8 @@ package handlers
 import (
 	"service-products/internals/models"
 
+	"math/rand"
+
 	"github.com/go-swagno/swagno/components/endpoint"
 	"github.com/go-swagno/swagno/components/http/response"
 	"github.com/go-swagno/swagno/components/parameter"
@@ -25,6 +27,10 @@ func NewProductHandler(productService ProductService) *ProductHander {
 }
 
 func (h *ProductHander) handleGetProducts(c *fiber.Ctx) error {
+	err := generateRandom503Error()
+	if err != nil {
+		return c.SendStatus(fiber.StatusServiceUnavailable)
+	}
 
 	products, err := h.productService.GetProducts()
 	if err != nil {
@@ -34,6 +40,11 @@ func (h *ProductHander) handleGetProducts(c *fiber.Ctx) error {
 }
 
 func (h *ProductHander) handleGetProductById(c *fiber.Ctx) error {
+	err := generateRandom503Error()
+	if err != nil {
+		return c.SendStatus(fiber.StatusServiceUnavailable)
+	}
+
 	productId, err := c.ParamsInt("id")
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"Error": err.Error()})
@@ -45,6 +56,13 @@ func (h *ProductHander) handleGetProductById(c *fiber.Ctx) error {
 	}
 
 	return c.Status(fiber.StatusOK).JSON(product)
+}
+
+func generateRandom503Error() error {
+	if rand.Intn(5) == 0 {
+		return models.ErrorServiceUnavailable
+	}
+	return nil
 }
 
 func (h *ProductHander) SetRoutes(app *fiber.App) {

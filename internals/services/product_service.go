@@ -1,6 +1,8 @@
 package services
 
-import "service-products/internals/models"
+import (
+	"service-products/internals/models"
+)
 
 type ProductRepository interface {
 	GetProducts() ([]models.Product, error)

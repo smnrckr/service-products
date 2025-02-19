@@ -33,7 +33,6 @@ func TestFavoritesListsRepository(t *testing.T) {
 
 		jsonDataFromHttp, err := io.ReadAll(resp.Body)
 		assert.NoError(t, err)
-
 		products := []models.Product{}
 		err = json.Unmarshal(jsonDataFromHttp, &products)
 		assert.NoError(t, err)
