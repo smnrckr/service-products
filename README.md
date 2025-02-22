@@ -1,6 +1,11 @@
-# Service-Products
+# Cimri Internship Case - Products Service
+This repository contains the Favorites Service, which is a part of a microservices-based architecture developed in Go. The system consists of the following core services:
 
-This repository contains the **Product Service**, a core component of the microservices-based architecture designed in Go. The service handles operations related to product management, including retrieving all products and getting product details by ID.
+User Service: Handles user-related operations, including managing user profiles, preferences, and interactions.
+
+Product Service: Manages product data and retrieves product details based on product ID.
+
+Favorites Service: Enables users to create, update, delete, and view their favorite lists. Users can also add or remove products from these lists. This service communicates with both the User Service and the Product Service.
 
 The service consists of the following key components:
 
