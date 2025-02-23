@@ -15,9 +15,9 @@ import (
 )
 
 func TestFavoritesListsRepository(t *testing.T) {
-
+	mockRedis := handlers.NewMockRedis()
 	userRepo := repositories.NewProductsRepository(testDb)
-	userService := services.NewProductService(userRepo)
+	userService := services.NewProductService(userRepo, mockRedis)
 	handler := handlers.NewProductHandler(userService)
 
 	app := fiber.New()
